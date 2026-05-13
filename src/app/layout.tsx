@@ -9,7 +9,19 @@ import "./globals.css"
 
 export const metadata = {
   title: "Nishant Homeo pharmacy",
-  description: "Nishant Homeo Pharmacy - All kind of homeopathic medicine available with doctor consultation clincic near  Burari Delhi",
+  description: "Nishant Homeo Pharmacy in Burari Delhi offering homeopathic treatment for allergies, thyroid, hair fall, PCOS, skin problems and chronic diseases.",
+    keywords: [
+    "Nishant Homeo Pharmacy",
+    "Homeopathy clinic Delhi",
+    "Burari homeopathy doctor",
+    "Homeopathic treatment",
+    "Hair fall treatment",
+    "PCOS homeopathy",
+    "Thyroid treatment",
+    "Skin allergy treatment",
+    "Homeopathy near me",
+    "Best homeopathy clinic in Delhi",
+  ],
 }
 
 export default function RootLayout({
