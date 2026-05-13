@@ -44,7 +44,7 @@ export default function Navbar() {
             href="/about"
             className="hover:text-[#3ba6d6] transition"
           >
-            about
+            About
           </Link>
 
           <Link

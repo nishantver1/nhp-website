@@ -8,7 +8,7 @@ type Disease = {
 const data: Disease[] = [
  { title: "Hair Fall", desc: "Effective treatment for hair loss" },
   { title: "Skin Allergy", desc: "Natural skin disease treatment" },
-  { title: "PCOS", desc: "Hormonal balance with homeopathy" },
+  { title: "PMOS(PCOS)", desc: "Hormonal balance with homeopathy" },
   { title: "Migraine", desc: "Long-term relief from headaches" },
   { title: "Thyroid", desc: "Safe thyroid management" },
   { title: "Acidity", desc: "Relief from acid reflux and indigestion" },

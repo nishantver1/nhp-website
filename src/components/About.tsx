@@ -12,7 +12,7 @@ export default function About() {
 
           <p className="mt-4 text-sm md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Nishant Homeo Pharmacy provides trusted homeopathic treatment
-            for hair fall, allergies, thyroid disorders, PCOS, skin diseases,
+            for hair fall, allergies, thyroid disorders, PMOS(PCOS), skin diseases,
             digestive issues, and chronic health conditions in Burari, Delhi.
           </p>
 
@@ -33,7 +33,7 @@ export default function About() {
 
           <div className="bg-blue-50 p-6 rounded-2xl shadow-sm">
             <h3 className="text-lg font-semibold text-blue-900">
-              PCOS & Thyroid Care
+              PMOS(PCOS) & Thyroid Care
             </h3>
 
             <p className="mt-3 text-gray-600 text-sm md:text-base">

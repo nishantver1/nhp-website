@@ -78,9 +78,14 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
         "0"
       )}-${String(i).padStart(2, "0")}`;
 
-      const isUnavailable = unavailableDates.includes(dateString);
-
       const cellDate = new Date(year, month, i);
+
+      // Tuesday = 2
+      const isTuesday = cellDate.getDay() === 2;
+
+      // Manual unavailable dates + Tuesdays
+      const isUnavailable =
+        unavailableDates.includes(dateString) || isTuesday;
 
       const isPast = cellDate < today;
       const isToday = cellDate.getTime() === today.getTime();
@@ -88,16 +93,18 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
       let statusColor =
         "bg-green-100 text-green-800 border-green-200";
 
-      let statusText = "Available";
+      let statusText = "Avail.";
 
       const isFuture = cellDate > today;
 
       if (isUnavailable) {
-        statusText = "Off";
+        statusText = isTuesday ? "Weekly Off" : "Off";
+
         statusColor =
           "bg-red-100 text-red-800 border-red-200";
       } else if (isPast && !isToday) {
         statusText = "Past";
+
         statusColor =
           "bg-gray-100 text-gray-500 border-gray-200";
       } else if (isFuture) {
@@ -107,7 +114,7 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
       days.push(
         <div
           key={i}
-          className={`relative p-1.5 md:p-4 border rounded-xl flex flex-col items-center justify-center min-h-[70px] md:min-h-20 transition-all hover:scale-[1.02] ${
+          className={`relative p-1.5 md:p-4 border rounded-xl flex flex-col items-center justify-center min-h-[78px] md:min-h-20 transition-all hover:scale-[1.02] ${
             isToday
               ? "ring-2 ring-blue-500 ring-offset-2"
               : ""
@@ -117,7 +124,7 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
             {i}
           </span>
 
-          <span className="text-[10px] md:text-xs font-medium mt-1 text-center">
+          <span className="text-[10px] md:text-xs font-medium mt-1 text-center break-words leading-tight">
             {statusText}
           </span>
         </div>
@@ -197,6 +204,7 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
 
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-green-100 border border-green-200"></div>
+
               <span className="text-xs md:text-sm text-gray-600 font-medium">
                 Available
               </span>
@@ -204,13 +212,15 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
 
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-red-100 border border-red-200"></div>
+
               <span className="text-xs md:text-sm text-gray-600 font-medium">
-                Unavailable
+                Off / Weekly Off
               </span>
             </div>
 
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-gray-100 border border-gray-200"></div>
+
               <span className="text-xs md:text-sm text-gray-600 font-medium">
                 Past
               </span>

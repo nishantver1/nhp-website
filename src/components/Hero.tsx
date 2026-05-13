@@ -27,7 +27,8 @@ export default function Hero() {
             Homeopathy is a safe and natural system of medicine that treats
             the root cause of diseases. At Nishant Homoeo Pharmacy, we provide
             effective treatment for hair fall, skin problems, allergies,
-            PCOS, thyroid, and chronic diseases.
+            PMOS(PCOS), thyroid, and chronic diseases.
+
           </p>
 
           {/* Buttons */}
