@@ -1,5 +1,5 @@
 
-import AIChat from "../components/AiChat"
+
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import TopBar from "../components/TopBar"
@@ -25,7 +25,6 @@ export default function RootLayout({
         <main className="p-3">
           {children}
           <WhatsappButton/>
-          <AIChat/>
         </main>
         <Footer/>
 

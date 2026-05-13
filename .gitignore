@@ -44,4 +44,4 @@ next-env.d.ts
 backend/
 
 #aichat
-src\components\AiChat.tsx
+src/components/AiChat.tsx
