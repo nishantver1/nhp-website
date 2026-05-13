@@ -9,7 +9,7 @@ import "./globals.css"
 
 export const metadata = {
   title: "Nishant Homeo pharmacy",
-  description: "Natural homeopathic treatment",
+  description: "Nishant Homeo Pharmacy - All kind of homeopathic medicine available with doctor consultation clincic near  Burari Delhi",
 }
 
 export default function RootLayout({
