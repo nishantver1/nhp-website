@@ -1,59 +1,114 @@
 "use client";
 
-type Disease = {
+import {
+  FaHeartbeat,
+  FaLeaf,
+  FaUserMd,
+  FaClinicMedical,
+  FaRegSmile,
+  FaStethoscope,
+} from "react-icons/fa";
+
+type Highlight = {
   title: string;
   desc: string;
+  icon: React.ReactNode;
 };
 
-const data: Disease[] = [
- { title: "Hair Fall", desc: "Effective treatment for hair loss" },
-  { title: "Skin Allergy", desc: "Natural skin disease treatment" },
-  { title: "PMOS(PCOS)", desc: "Hormonal balance with homeopathy" },
-  { title: "Migraine", desc: "Long-term relief from headaches" },
-  { title: "Thyroid", desc: "Safe thyroid management" },
-  { title: "Acidity", desc: "Relief from acid reflux and indigestion" },
-  { title: "Diabetes", desc: "Support for blood sugar management" },
-  { title: "Arthritis", desc: "Joint pain and inflammation relief" },
-  { title: "Asthma", desc: "Better breathing and lung support" },
-  { title: "Eczema", desc: "Soothing chronic skin conditions" },
-  { title: "Psoriasis", desc: "Natural care for skin disorders" },
-  { title: "Depression", desc: "Mental wellness and emotional balance" },
-  { title: "Anxiety", desc: "Reduce stress and nervousness" },
-  { title: "Insomnia", desc: "Improve sleep quality naturally" },
-  { title: "Allergic Rhinitis", desc: "Relief from sneezing and allergies" },
-  { title: "Kidney Stones", desc: "Support for stone dissolution" },
-  { title: "Constipation", desc: "Improve digestion and bowel movement" },
-  { title: "Piles", desc: "Treatment for hemorrhoids" },
-  { title: "Sinusitis", desc: "Relief from sinus infections" },
-  { title: "Back Pain", desc: "Chronic and acute pain relief" },
+const data: Highlight[] = [
+  {
+    title: "Natural Healing",
+    desc: "Safe and gentle homeopathic treatment for long-term wellness.",
+    icon: <FaLeaf />,
+  },
+  {
+    title: "Experienced Care",
+    desc: "Personalized consultation and patient-focused treatment plans.",
+    icon: <FaUserMd />,
+  },
+  {
+    title: "Chronic Disease Care",
+    desc: "Support for thyroid, PCOS, allergies, migraines, and more.",
+    icon: <FaHeartbeat />,
+  },
+  {
+    title: "Modern Clinic",
+    desc: "Comfortable clinic environment with trusted healthcare support.",
+    icon: <FaClinicMedical />,
+  },
+  {
+    title: "Patient Satisfaction",
+    desc: "Focused on improving health naturally and effectively.",
+    icon: <FaRegSmile />,
+  },
+  {
+    title: "Holistic Treatment",
+    desc: "Treating the root cause instead of only symptoms.",
+    icon: <FaStethoscope />,
+  },
 ];
 
 export default function AutoSlider() {
   return (
-    <section className="py-16 bg-white overflow-hidden">
-      <h2 className="text-3xl font-bold text-center text-blue-900">
-        Treatments We Offer
-      </h2>
+    <section className="relative py-12 md:py-16 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
 
-      <div className="mt-10 overflow-hidden">
-        <div className="flex w-max gap-6 animate-scroll">
+      {/* Background Blur */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage: "url('/nhp-nobg.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "250px",
+        }}
+      />
+
+      {/* Heading */}
+      <div className="relative text-center px-4">
+
+        <h2 className="text-2xl md:text-4xl font-bold text-blue-900">
+          Clinic Highlights
+        </h2>
+
+        <p className="mt-3 text-sm md:text-lg text-gray-600 max-w-2xl mx-auto">
+          Discover the care, treatments, and wellness-focused approach at
+          Nishant Homeo Pharmacy.
+        </p>
+
+      </div>
+
+      {/* Slider */}
+      <div className="relative mt-10 overflow-hidden">
+
+        <div className="flex w-max gap-4 md:gap-6 animate-scroll px-4">
 
           {[...data, ...data].map((item, i) => (
             <div
               key={i}
-              className="min-w-70 bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-lg transition"
+              className="min-w-[240px] md:min-w-[320px] bg-white border border-blue-100 p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
             >
-              <h3 className="text-lg font-semibold text-blue-800">
+
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-4">
+                {item.icon}
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg md:text-xl font-semibold text-blue-900">
                 {item.title}
               </h3>
-              <p className="text-gray-600 mt-2">
+
+              {/* Description */}
+              <p className="text-sm md:text-base text-gray-600 mt-3 leading-relaxed">
                 {item.desc}
               </p>
+
             </div>
           ))}
 
         </div>
+
       </div>
+
     </section>
   );
 }

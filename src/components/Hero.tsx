@@ -4,12 +4,12 @@ export default function Hero() {
 
       {/* Background Logo */}
       <div
-        className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none"
+        className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none"
         style={{
-          backgroundImage: "url('/nhp-nobg.png')",
+          backgroundImage: "url('/nhp-clinic.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          backgroundSize: "220px",
+          backgroundSize: "cover",
         }}
       />
 

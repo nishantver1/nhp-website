@@ -16,13 +16,13 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
 
   const nextMonth = () => {
     setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1),
     );
   };
 
   const prevMonth = () => {
     setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1),
     );
   };
 
@@ -64,10 +64,7 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
     // Empty spaces before month starts
     for (let i = 0; i < firstDay; i++) {
       days.push(
-        <div
-          key={`empty-${i}`}
-          className="min-h-[78px] md:min-h-20"
-        />
+        <div key={`empty-${i}`} className="min-h-[78px] md:min-h-20" />,
       );
     }
 
@@ -75,7 +72,7 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
     for (let i = 1; i <= daysInMonth; i++) {
       const dateString = `${year}-${String(month + 1).padStart(
         2,
-        "0"
+        "0",
       )}-${String(i).padStart(2, "0")}`;
 
       const cellDate = new Date(year, month, i);
@@ -84,14 +81,12 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
       const isTuesday = cellDate.getDay() === 2;
 
       // Manual unavailable dates + Tuesdays
-      const isUnavailable =
-        unavailableDates.includes(dateString) || isTuesday;
+      const isUnavailable = unavailableDates.includes(dateString) || isTuesday;
 
       const isPast = cellDate < today;
       const isToday = cellDate.getTime() === today.getTime();
 
-      let statusColor =
-        "bg-green-100 text-green-800 border-green-200";
+      let statusColor = "bg-green-100 text-green-800 border-green-200";
 
       let statusText = "Avail.";
 
@@ -100,13 +95,11 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
       if (isUnavailable) {
         statusText = isTuesday ? "Weekly Off" : "Off";
 
-        statusColor =
-          "bg-red-100 text-red-800 border-red-200";
+        statusColor = "bg-red-100 text-red-800 border-red-200";
       } else if (isPast && !isToday) {
         statusText = "Past";
 
-        statusColor =
-          "bg-gray-100 text-gray-500 border-gray-200";
+        statusColor = "bg-gray-100 text-gray-500 border-gray-200";
       } else if (isFuture) {
         statusText = "Avail.";
       }
@@ -115,19 +108,15 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
         <div
           key={i}
           className={`relative p-1.5 md:p-4 border rounded-xl flex flex-col items-center justify-center min-h-[78px] md:min-h-20 transition-all hover:scale-[1.02] ${
-            isToday
-              ? "ring-2 ring-blue-500 ring-offset-2"
-              : ""
+            isToday ? "ring-2 ring-blue-500 ring-offset-2" : ""
           } ${statusColor}`}
         >
-          <span className="text-sm md:text-lg font-semibold">
-            {i}
-          </span>
+          <span className="text-sm md:text-lg font-semibold">{i}</span>
 
           <span className="text-[10px] md:text-xs font-medium mt-1 text-center break-words leading-tight">
             {statusText}
           </span>
-        </div>
+        </div>,
       );
     }
 
@@ -135,29 +124,35 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
   };
 
   return (
-    <section className="py-10 md:py-16 bg-white">
+    <section className="py-10 md:py-16 bg-white overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 opacity-15 pointer-events-none"
+        style={{
+          backgroundImage: "url('/nhp-nobg.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "220px",
+        }}
+      />
 
       <div className="max-w-5xl mx-auto px-4 md:px-6">
-
         {/* Heading */}
         <div className="text-center mb-8 md:mb-10">
-
           <h2 className="text-2xl md:text-3xl font-bold text-blue-900">
             Doctor Availability
           </h2>
 
           <p className="text-sm md:text-base text-gray-600 mt-2">
-            Check the calendar below to see when the doctor is available for consultation.
+            Check the calendar below to see when the doctor is available for
+            consultation.
           </p>
-
         </div>
 
         {/* Calendar Box */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-4 md:p-8">
-
           {/* Month Navigation */}
           <div className="flex items-center justify-between mb-6 md:mb-8">
-
             <button
               onClick={prevMonth}
               className="p-2 md:p-3 rounded-full hover:bg-blue-50 text-blue-700 transition"
@@ -177,12 +172,10 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
             >
               <FaChevronRight size={16} />
             </button>
-
           </div>
 
           {/* Days Header */}
           <div className="grid grid-cols-7 gap-1.5 md:gap-4 mb-3 md:mb-4">
-
             {daysOfWeek.map((day) => (
               <div
                 key={day}
@@ -191,7 +184,6 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
                 {day}
               </div>
             ))}
-
           </div>
 
           {/* Calendar Grid */}
@@ -201,7 +193,6 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
 
           {/* Legend */}
           <div className="mt-6 md:mt-8 flex flex-wrap items-center justify-center gap-3 md:gap-6 border-t pt-5 md:pt-6">
-
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-green-100 border border-green-200"></div>
 
@@ -225,13 +216,9 @@ const DoctorAvailabilityCalendar: React.FC<CalendarProps> = ({
                 Past
               </span>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 };
