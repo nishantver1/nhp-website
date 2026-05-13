@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="mt-8 flex gap-4">
 
             <a
-              href="https://wa.me/918287203255"
+              href="https://wa.me/917834955603"
               className="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition"
             >
               Book Consultation
